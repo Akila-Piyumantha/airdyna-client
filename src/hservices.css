@@ -157,7 +157,7 @@ h3 {
 
 .bodyback2
   {
-    background-image: url('C:\Users\akila\OneDrive\Desktop\mern\airdyna\public\homeback2.jpg');
+    background-image: url('/public/homeback2.jpg');
     background-repeat: repeat; /* Repeat the image to cover the whole page */
     background-size: auto; /* Adjust as needed: cover, contain, or a specific size */
     background-attachment: fixed; 
