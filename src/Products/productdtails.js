@@ -10,15 +10,25 @@ const Pro = () => {
 
     useEffect(() => {
         const fetchProducts = async (page) => {
-            const response = await fetch(`/api/workouts?page=${page}&limit=12`);
-            const data = await response.json();
+            try {
+                const response = await fetch(`/api/workouts?page=${page}&limit=12`, {
+                    method: 'GET',
+                    credentials: 'include'
+                });
 
-            if (response.ok) {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
                 setWorkouts(data.workouts);
                 setCurrentPage(data.page);
                 setTotalPages(data.totalPages);
+            } catch (error) {
+                console.error('Error fetching products:', error);
             }
         };
+
         fetchProducts(currentPage);
     }, [currentPage]);
 
@@ -43,3 +53,4 @@ const Pro = () => {
 };
 
 export default Pro;
+
