@@ -11,7 +11,7 @@ const Pro = () => {
     useEffect(() => {
         const fetchProducts = async (page) => {
             try {
-                const response = await fetch(`/api/workouts?page=${page}&limit=12`, {
+                const response = await fetch(`https://dyna2-api-git-master-akila-piyumanthas-projects.vercel.app/api/workouts?page=${page}&limit=12`, {
                     method: 'GET',
                     credentials: 'include'
                 });
@@ -60,5 +60,6 @@ const Pro = () => {
 };
 
 export default Pro;
+
 
 
