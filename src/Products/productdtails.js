@@ -10,32 +10,15 @@ const Pro = () => {
 
     useEffect(() => {
         const fetchProducts = async (page) => {
-            try {
-                const response = await fetch(`https://dyna2-api-git-master-akila-piyumanthas-projects.vercel.app/api/workouts?page=${page}&limit=12`, {
-                    method: 'GET',
-                    credentials: 'include'
-                });
+            const response = await fetch(/api/workouts?page=${page}&limit=12);
+            const data = await response.json();
 
-                const text = await response.text();
-
-                try {
-                    const data = JSON.parse(text);
-
-                    if (response.ok) {
-                        setWorkouts(data.workouts);
-                        setCurrentPage(data.page);
-                        setTotalPages(data.totalPages);
-                    } else {
-                        console.error('Error fetching products:', data);
-                    }
-                } catch (error) {
-                    console.error('Received non-JSON response:', text);
-                }
-            } catch (error) {
-                console.error('Error fetching products:', error);
+            if (response.ok) {
+                setWorkouts(data.workouts);
+                setCurrentPage(data.page);
+                setTotalPages(data.totalPages);
             }
         };
-
         fetchProducts(currentPage);
     }, [currentPage]);
 
@@ -60,6 +43,4 @@ const Pro = () => {
 };
 
 export default Pro;
-
-
 
