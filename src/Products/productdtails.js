@@ -16,14 +16,21 @@ const Pro = () => {
                     credentials: 'include'
                 });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                const text = await response.text();
 
-                const data = await response.json();
-                setWorkouts(data.workouts);
-                setCurrentPage(data.page);
-                setTotalPages(data.totalPages);
+                try {
+                    const data = JSON.parse(text);
+
+                    if (response.ok) {
+                        setWorkouts(data.workouts);
+                        setCurrentPage(data.page);
+                        setTotalPages(data.totalPages);
+                    } else {
+                        console.error('Error fetching products:', data);
+                    }
+                } catch (error) {
+                    console.error('Received non-JSON response:', text);
+                }
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -53,4 +60,5 @@ const Pro = () => {
 };
 
 export default Pro;
+
 
