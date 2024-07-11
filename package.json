@@ -1,5 +1,5 @@
 {
-  "proxy": "https://dyna2-api-git-master-akila-piyumanthas-projects.vercel.app/",
+  "proxy": "https://dyna2-api.vercel.app/",
   "name": "airdyna",
   "version": "0.1.0",
   "private": true,
