@@ -14,11 +14,19 @@ const Pro = () => {
         const fetchProducts = async (page) => {
             try {
                 const response = await fetch(`${apiUrl}/api/workouts?page=${page}&limit=12`);
+                const contentType = response.headers.get('content-type');
+
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                  throw new Error('Network response was not ok');
                 }
-                console.log(response);
-                const data = await response.json();
+            
+                if (contentType && contentType.indexOf('application/json') !== -1) {
+                  const data = await response.json();
+                  console.log(data);
+                } else {
+                  const text = await response.text();
+                  console.error('Expected JSON, but got:', text);
+                }
 
                 setWorkouts(data.workouts);
                 setCurrentPage(data.page);
