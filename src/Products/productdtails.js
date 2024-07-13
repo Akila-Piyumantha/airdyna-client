@@ -17,24 +17,23 @@ const Pro = () => {
                 const contentType = response.headers.get('content-type');
 
                 if (!response.ok) {
-                  throw new Error('Network response was not ok');
+                    throw new Error('Network response was not ok');
                 }
-            
+                
                 if (contentType && contentType.indexOf('application/json') !== -1) {
-                  const data = await response.json();
-                  console.log(data);
-                    
-                setWorkouts(data.workouts);
-                setCurrentPage(data.page);
-                setTotalPages(data.totalPages);
-                    
+                    const data = await response.json();
+                    setWorkouts(data.workouts);
+                    setCurrentPage(data.page);
+                    setTotalPages(data.totalPages);
                 } else {
-                  const text = await response.text();
-                  console.error('Expected JSON, but got:', text);
+                    const text = await response.text();
+                    console.error('Expected JSON, but got:', text);
+                    throw new Error('Response was not JSON');
                 }
 
             } catch (err) {
                 console.error('Failed to fetch workouts:', err);
+                setError(err.message);  // Set error state with the error message
             }
         };
         fetchProducts(currentPage);
