@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './pstyles.css';
-import '../navbar2styles.css';
 import Procard from './products';
 import Pagination from './pagination';
 
@@ -8,36 +7,26 @@ const Pro = () => {
     const [workouts, setWorkouts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [error, setError] = useState(null);  // Error state
-    const apiUrl = process.env.API_URL;
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProducts = async (page) => {
             try {
-                const response = await fetch(`${apiUrl}/api/workouts?page=${page}&limit=12`);
-                const contentType = response.headers.get('content-type');
-
+                const response = await fetch(`/api/workouts?page=${page}&limit=12`);
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
-                if (contentType && contentType.indexOf('application/json') !== -1) {
-                    const data = await response.json();
-                    setWorkouts(data.workouts);
-                    setCurrentPage(data.page);
-                    setTotalPages(data.totalPages);
-                } else {
-                    const text = await response.text();
-                    console.error('Expected JSON, but got:', text);
-                    throw new Error('Response was not JSON');
-                }
-
+                const data = await response.json();
+                console.log(data);  // Log the received data
+                setWorkouts(data.workouts);
+                setCurrentPage(data.page);
+                setTotalPages(data.totalPages);
             } catch (err) {
                 console.error('Failed to fetch workouts:', err);
-                setError(err.message);  // Set error state with the error message
+                setError(err.message);
             }
         };
-
         fetchProducts(currentPage);
     }, [currentPage]);
 
@@ -48,7 +37,7 @@ const Pro = () => {
     return (
         <div className='bodyback'>
             {error ? (
-                <div className="error-message">Error: {error}</div>  // Display error message
+                <div className="error-message">Error: {error}</div>
             ) : (
                 <>
                     <section className="hero-section bodym bodyback">
@@ -68,3 +57,4 @@ const Pro = () => {
 };
 
 export default Pro;
+
