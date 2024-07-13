@@ -24,7 +24,6 @@ const Pro = () => {
                 setTotalPages(data.totalPages);
             } catch (err) {
                 console.error('Failed to fetch workouts:', err);
-                setError(err.message);  // Set error message
             }
         };
         fetchProducts(currentPage);
