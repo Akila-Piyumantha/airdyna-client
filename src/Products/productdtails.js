@@ -19,7 +19,7 @@ const Pro = () => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                
+
                 if (contentType && contentType.indexOf('application/json') !== -1) {
                     const data = await response.json();
                     setWorkouts(data.workouts);
@@ -36,6 +36,7 @@ const Pro = () => {
                 setError(err.message);  // Set error state with the error message
             }
         };
+
         fetchProducts(currentPage);
     }, [currentPage]);
 
