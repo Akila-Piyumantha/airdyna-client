@@ -8,11 +8,12 @@ const Pro = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [error, setError] = useState(null);  // Error state
+    const apiUrl = process.env.API_URL;
 
     useEffect(() => {
         const fetchProducts = async (page) => {
             try {
-                const response = await fetch(`/api/workouts?page=${page}&limit=12`);
+                const response = await fetch(`${apiUrl}/api/workouts?page=${page}&limit=12`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
