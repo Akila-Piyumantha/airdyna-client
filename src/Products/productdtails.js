@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './pstyles.css';
+import '../navbar2styles.css';
 import Procard from './products';
 import Pagination from './pagination';
 
