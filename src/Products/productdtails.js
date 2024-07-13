@@ -10,13 +10,23 @@ const Pro = () => {
 
     useEffect(() => {
         const fetchProducts = async (page) => {
+            try{
             const response = await fetch(`/api/workouts?page=${page}&limit=12`);
+            if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const data = await response.json();
 
             if (response.ok) {
                 setWorkouts(data.workouts);
                 setCurrentPage(data.page);
                 setTotalPages(data.totalPages);
+            }
+            }
+            catch(err){
+                console.error('Failed to fetch workouts:', err);
+                setError(err.message);
             }
         };
         fetchProducts(currentPage);
