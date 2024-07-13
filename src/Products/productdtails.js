@@ -23,14 +23,16 @@ const Pro = () => {
                 if (contentType && contentType.indexOf('application/json') !== -1) {
                   const data = await response.json();
                   console.log(data);
+                    
+                setWorkouts(data.workouts);
+                setCurrentPage(data.page);
+                setTotalPages(data.totalPages);
+                    
                 } else {
                   const text = await response.text();
                   console.error('Expected JSON, but got:', text);
                 }
 
-                setWorkouts(data.workouts);
-                setCurrentPage(data.page);
-                setTotalPages(data.totalPages);
             } catch (err) {
                 console.error('Failed to fetch workouts:', err);
             }
