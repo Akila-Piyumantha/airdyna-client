@@ -16,7 +16,7 @@ const Pro = () => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-
+                console.log(response);
                 const data = await response.json();
 
                 setWorkouts(data.workouts);
