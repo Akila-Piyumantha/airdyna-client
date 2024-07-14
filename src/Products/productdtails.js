@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './pstyles.css';
 import Procard from './products';
 import Pagination from './pagination';
@@ -10,13 +11,19 @@ const Pro = () => {
 
     useEffect(() => {
         const fetchProducts = async (page) => {
-            const response = await fetch(`/api/workouts?page=${page}&limit=12`);
-            const data = await response.json();
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API}/api/workouts`, {
+                    params: { page, limit: 12 }
+                });
+                const data = response.data;
 
-            if (response.ok) {
-                setWorkouts(data.workouts);
-                setCurrentPage(data.page);
-                setTotalPages(data.totalPages);
+                if (response.status === 200) {
+                    setWorkouts(data.workouts);
+                    setCurrentPage(data.page);
+                    setTotalPages(data.totalPages);
+                }
+            } catch (error) {
+                console.error("Error fetching products", error);
             }
         };
         fetchProducts(currentPage);
