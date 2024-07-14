@@ -18,7 +18,8 @@
     "react-toastify": "^10.0.5",
     "rellax": "^1.12.1",
     "styled-components": "^6.1.11",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+     "axios": "^0.27.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,3 +46,4 @@
     ]
   }
 }
+
