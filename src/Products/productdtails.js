@@ -10,7 +10,7 @@ const Pro = () => {
 
     useEffect(() => {
         const fetchProducts = async (page) => {
-            const response = await fetch(`/api/workouts?page=${page}&limit=12`);
+            const response = await fetch(`https://last-api-five.vercel.app/api/workouts?page=${page}&limit=12`);
             const data = await response.json();
 
             if (response.ok) {
