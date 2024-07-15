@@ -29,7 +29,7 @@ const CardP = () => {
 
      useEffect(() => {
         const fetchProducts = async (page) => {
-            const response = await fetch(`/api/workouts?page=${page}&limit=12`);
+            const response = await fetch(`https://last-api-five.vercel.app/api/workouts?page=${page}&limit=12`);
             const data = await response.json();
             if (response.ok) {
                 setWorkouts(data.workouts);
@@ -50,7 +50,7 @@ const CardP = () => {
         setImageUrl('');
         setQuantity('');
              
-        const response = await fetch('/api/workouts/' + id);
+        const response = await fetch('https://last-api-five.vercel.app/api/workouts/' + id);
         const json = await response.json();
         if (!response.ok) {
             setError(json.error);
@@ -71,7 +71,7 @@ const CardP = () => {
                 return
             }
         const product = { title, description, imageUrl, quantity };
-        const response = await fetch('/api/workouts', {
+        const response = await fetch('https://last-api-five.vercel.app/api/workouts', {
             method: 'POST',
             body: JSON.stringify(product),
             headers: {
@@ -104,7 +104,7 @@ const CardP = () => {
             return
         }; // Ensure a workout is selected
         const product = { title, description, imageUrl, quantity };
-        const response = await fetch('/api/workouts/' + selectedWorkoutId, {
+        const response = await fetch('https://last-api-five.vercel.app/api/workouts/' + selectedWorkoutId, {
             method: 'PATCH',
             body: JSON.stringify(product),
             headers: {
@@ -141,7 +141,7 @@ const CardP = () => {
 
 
 
-                        const response = await fetch('/api/workouts/' + id, {
+                        const response = await fetch('https://last-api-five.vercel.app/api/workouts/' + id, {
                             method: 'DELETE',
                             headers: {
                                 'Content-Type': 'application/json',

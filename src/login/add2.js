@@ -7,7 +7,7 @@ const Addpage = ()=>
 
         useEffect(() => {
             const fetchProducts = async () => {
-                const response = await fetch('/api/workouts')
+                const response = await fetch('https://last-api-five.vercel.app/api/workouts')
                 const json = await response.json()
     
                 if (response.ok) {
