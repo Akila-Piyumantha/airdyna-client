@@ -99,6 +99,29 @@
     background-color: #c0392b;
 }
 
+.admin-header {
+    background-color: #ecf0f1;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
 .content {
     flex: 1;
     padding: 20px;

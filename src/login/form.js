@@ -273,7 +273,7 @@ const CardP = () => {
 
     
      return (
-        <DashboardLayout onSearchChange={handleSearchChange} onLogout={handleLogout}>
+        <DashboardLayout onSearchChange={handleSearchChange} onLogout={handleLogout} isAdmin={user?.role === 'admin'}>
             <div className="dashboard-content">
                 <button className="btn-add-new" onClick={handleAddNew}>Add New</button>
                 <table className="product-table">
