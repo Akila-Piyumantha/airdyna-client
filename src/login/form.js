@@ -23,6 +23,11 @@ const CardP = () => {
         const [isModalOpen, setIsModalOpen] = useState(false);
         const [modalMode, setModalMode] = useState('add'); // 'add' or 'edit'
         const [selectedProduct, setSelectedProduct] = useState(null);
+        const [title, setTitle] = useState('');
+        const [description, setDescription] = useState('');
+        const [imageUrl, setImageUrl] = useState('');
+        const [quantity, setQuantity] = useState('');
+        const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
        
         //logout
      const {logout} = useLogout()
