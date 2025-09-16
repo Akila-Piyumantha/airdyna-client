@@ -58,6 +58,8 @@ const CardP = () => {
         }
      }, [workouts, searchTerm]);
 
+
+
      const handlePageChange = (page) => {
         setCurrentPage(page);
      };

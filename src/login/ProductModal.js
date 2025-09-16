@@ -44,8 +44,8 @@ const ProductModal = ({ isOpen, onClose, onSave, product, mode }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="modal-overlay">
-            <div className="modal">
+        <div className="modal-overlay" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+            <div className="modal" style={{ backgroundColor: 'white', borderRadius: '8px', width: '500px', maxWidth: '90%', maxHeight: '90%', overflowY: 'auto' }}>
                 <div className="modal-header">
                     <h3>{mode === 'add' ? 'Add New Product' : 'Edit Product'}</h3>
                     <button className="close-btn" onClick={onClose}>&times;</button>
