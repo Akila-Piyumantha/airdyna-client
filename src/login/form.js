@@ -108,10 +108,12 @@ const CardP = () => {
         } else {
             setError(null);
             toast.success('Product added successfully!');
-            // Refresh the page to show the new product
-            window.location.reload();
+            // Update the workouts state to include the new product
+            setWorkouts(prev => [json, ...prev]);
         }
      };
+
+     // Remove window.location.reload() calls from add and update handlers
 
      const handleUpdateProduct = async (productData) => {
         if (!user) {
@@ -137,8 +139,8 @@ const CardP = () => {
         } else {
             setError(null);
             toast.success('Product updated successfully!');
-            // Refresh the page to show the updated product
-            window.location.reload();
+            // Update the workouts state to reflect the changes
+            setWorkouts(prev => prev.map(w => w._id === json._id ? json : w));
         }
      };
 
@@ -189,7 +191,6 @@ const CardP = () => {
             setImageUrl('');
             setQuantity('');
             setError(null);
-            window.location.reload();
         }
      };
 
@@ -217,7 +218,6 @@ const CardP = () => {
             setError(json.error);
         } else {
             alert('Product updated successfully!');
-            window.location.reload();
         }
      };
 
