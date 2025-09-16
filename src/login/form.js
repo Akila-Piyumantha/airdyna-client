@@ -67,6 +67,7 @@ const CardP = () => {
      };
 
      const handleAddNew = () => {
+        console.log('handleAddNew called');
         setModalMode('add');
         setSelectedProduct(null);
         setIsModalOpen(true);
