@@ -110,6 +110,8 @@ const CardP = () => {
             toast.success('Product added successfully!');
             // Update the workouts state to include the new product
             setWorkouts(prev => [json, ...prev]);
+            // Go to the first page to show the new product
+            setCurrentPage(1);
         }
      };
 
