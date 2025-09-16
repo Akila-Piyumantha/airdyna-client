@@ -38,26 +38,28 @@ function App() {
   const {user} = useAuthContext()
   
   return (
-    
+
     <Router>
       <div className="App gradient-background">
-        <div className="Content">
-          <Navbar2 />
+        <div className="main-wrapper">
+          <div className="Content">
+            {!user && <Navbar2 />}
+          </div>
+          <Routes>
+            <Route path='/' element={<Home />} id='home' />
+            <Route path='/home' element={<Home />} id='home' />
+            <Route path='/about' element={<About/>} id ='about'/>
+            <Route path='/contact' element={<Contact/>} id ='contact'/>
+            <Route path='/login' element={<LoginPage2 />} id='login' />
+            <Route path='/add' element={user ? <Addpage /> :<Navigate to ="/login"/> } id='add' />
+            <Route path='/products' element={<Pro />} id='products' />
+            <Route path='/services' element={<Aservices />}  />
+
+
+
+
+          </Routes>
         </div>
-        <Routes>
-          <Route path='/' element={<Home />} id='home' />
-          <Route path='/home' element={<Home />} id='home' />
-          <Route path='/about' element={<About/>} id ='about'/>
-          <Route path='/contact' element={<Contact/>} id ='contact'/>
-          <Route path='/login' element={<LoginPage2 />} id='login' />
-          <Route path='/add' element={user ? <Addpage /> :<Navigate to ="/login"/> } id='add' />
-          <Route path='/products' element={<Pro />} id='products' />
-          <Route path='/services' element={<Aservices />}  />
-         
-          
-
-
-        </Routes>
         <>
           <Footer />
         </>
