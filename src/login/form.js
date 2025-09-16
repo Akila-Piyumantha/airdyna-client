@@ -67,7 +67,6 @@ const CardP = () => {
      };
 
      const handleAddNew = () => {
-        console.log('handleAddNew called');
         setModalMode('add');
         setSelectedProduct(null);
         setIsModalOpen(true);
@@ -308,6 +307,7 @@ const CardP = () => {
                     onPageChange={handlePageChange}
                 />
                 <ProductModal
+                    key={isModalOpen ? 'open' : 'closed'}
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
                     onSave={handleModalSave}
